@@ -40,5 +40,4 @@ public class ItemTest {
         tracker.findAll().sort(new NameSortDec());
         assertThat(tracker.findAll(), is(Arrays.asList(item3, item2, item1)));
     }
-
 }

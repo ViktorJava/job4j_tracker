@@ -36,7 +36,5 @@ public class FindNameActionTest {
                 .toString();
         assertThat(new String(out.toByteArray()), is(expect));
         System.setOut(def);
-
     }
-
 }

@@ -34,5 +34,4 @@ public class ShowAllActionTest {
         assertThat(new String(out.toByteArray()), is(expect));
         System.setOut(def);
     }
-
 }
