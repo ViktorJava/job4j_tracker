@@ -4,7 +4,7 @@ package ru.job4j;
  * Класс реализации выхода из программы.
  *
  * @author ViktorJava (gipsyscrew@gmail.com)
- * @version 0.1
+ * @version 1.1
  * @since 13.12.2019
  */
 public class ExitAction implements UserAction {
@@ -16,12 +16,12 @@ public class ExitAction implements UserAction {
     /**
      * Выход из программы
      *
-     * @param input   объект пользовательского ввода
-     * @param memTracker объект доступа к классу Tracker
+     * @param input      объект пользовательского ввода
+     * @param sqlTracker объект доступа к классу Tracker
      * @return флаг выхода.
      */
     @Override
-    public boolean execute(Input input, MemTracker memTracker) {
+    public boolean execute(Input input, Store sqlTracker) {
         System.out.println("Exit the Program");
         return false;
     }

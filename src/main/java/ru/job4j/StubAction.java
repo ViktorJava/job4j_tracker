@@ -6,7 +6,7 @@ package ru.job4j;
  * что мы выполнили этот тест.
  *
  * @author ViktorJava (gipsyscrew@gmail.com)
- * @version 0.1
+ * @version 1.1
  * @since 13.12.2019
  */
 public class StubAction implements UserAction {
@@ -18,7 +18,7 @@ public class StubAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, MemTracker memTracker) {
+    public boolean execute(Input input, Store sqlTracker) {
         call = true;
         return false;
     }

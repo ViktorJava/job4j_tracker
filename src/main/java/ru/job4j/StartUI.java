@@ -5,24 +5,24 @@ package ru.job4j;
  * В шаблоне проектирования стратегия-это Context.
  *
  * @author ViktorJava (gipsyscrew@gmail.com)
- * @version 0.1
+ * @version 1.1
  * @since 28.11.2019
  */
 public class StartUI {
     /**
      * Главный цикл программы.
      *
-     * @param input   класс определяющий ввод данных.
-     * @param memTracker класс работы с записями.
-     * @param actions массив действий.
+     * @param input      класс определяющий ввод данных.
+     * @param sqlTracker класс работы с записями.
+     * @param actions    массив действий.
      */
-    public void init(Input input, MemTracker memTracker, UserAction[] actions) {
+    public void init(Input input, Store sqlTracker, UserAction[] actions) {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
             int select = input.askInt("Select: ", actions.length);
             UserAction action = actions[select];
-            run = action.execute(input, memTracker);
+            run = action.execute(input, sqlTracker);
         }
     }
 
@@ -46,8 +46,8 @@ public class StartUI {
     public static void main(String[] args) {
         Input input = new ConsoleInput();
         Input validate = new ValidateInput(input);
-        MemTracker memTracker = new MemTracker();
-        //создаём массив действий
+        Store sqlTracker = new SqlTracker();
+        sqlTracker.init();
         UserAction[] actions = {
                 new CreateAction(),
                 new ShowAllAction(),
@@ -57,6 +57,6 @@ public class StartUI {
                 new FindNameAction(),
                 new ExitAction()
         };
-        new StartUI().init(validate, memTracker, actions);
+        new StartUI().init(validate, sqlTracker, actions);
     }
 }

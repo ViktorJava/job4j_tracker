@@ -4,7 +4,7 @@ package ru.job4j;
  * Класс реализации поиска записи по имени.
  *
  * @author ViktorJava (gipsyscrew@gmail.com)
- * @version 0.1
+ * @version 1.1
  * @since 12.12.2019
  */
 public class FindNameAction implements UserAction {
@@ -16,17 +16,17 @@ public class FindNameAction implements UserAction {
     /**
      * Поиск записи по имени.
      *
-     * @param input   объект пользовательского ввода
-     * @param memTracker объект доступа к классу Tracker
+     * @param input      объект пользовательского ввода
+     * @param sqlTracker объект доступа к классу Tracker
      * @return флаг выхода.
      */
     @Override
-    public boolean execute(Input input, MemTracker memTracker) {
+    public boolean execute(Input input, Store sqlTracker) {
         System.out.println();
         System.out.println("--- Find items by name ---");
         String name = input.askStr("Enter item name: ");
         System.out.println("please wait...");
-        for (Item item: memTracker.findByName(name)) {
+        for (Item item: sqlTracker.findByName(name)) {
             System.out.println(String.format("[name]: %s [id]: %s",
                     item.getName(), item.getId()));
         }

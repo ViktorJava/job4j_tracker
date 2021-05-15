@@ -5,7 +5,7 @@ package ru.job4j;
  * Заявка имеет 2 поля: имя и уникальный идентификатор.
  *
  * @author ViktorJava (gipsyscrew@gmail.com)
- * @version 0.1
+ * @version 1.1
  * @since 27.10.2019
  */
 public class Item {
@@ -13,6 +13,11 @@ public class Item {
     private String name;
 
     public Item(String name) {
+        this.name = name;
+    }
+
+    public Item(String id, String name) {
+        this.id = id;
         this.name = name;
     }
 

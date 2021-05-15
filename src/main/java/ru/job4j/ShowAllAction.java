@@ -1,10 +1,10 @@
 package ru.job4j;
 
 /**
- * Класс реализации отображения всех записей.
+ * Класс отображения всех записей.
  *
  * @author ViktorJava (gipsyscrew@gmail.com)
- * @version 0.1
+ * @version 1.1
  * @since 12.12.2019
  */
 public class ShowAllAction implements UserAction {
@@ -16,17 +16,18 @@ public class ShowAllAction implements UserAction {
     /**
      * Показать записи.
      *
-     * @param input   объект пользовательского ввода
-     * @param memTracker объект доступа к классу Tracker
+     * @param input      объект пользовательского ввода
+     * @param sqlTracker объект доступа к классу Tracker
      * @return флаг выхода.
      */
     @Override
-    public boolean execute(Input input, MemTracker memTracker) {
+    public boolean execute(Input input, Store sqlTracker) {
         System.out.println();
         System.out.println("--- Show all items ---");
         int count = 0;
-        for (Item item : memTracker.findAll()) {
-            System.out.println(String.format("%d.[name]: %s [id]: %s", (count++), item.getName(), item.getId()));
+        for (Item item: sqlTracker.findAll()) {
+            System.out.println(String.format("%d.[name]: %s [id]: %s",
+                    (count++), item.getName(), item.getId()));
         }
         System.out.println();
         return true;
