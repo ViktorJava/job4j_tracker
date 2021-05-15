@@ -17,16 +17,16 @@ public class EditAction implements UserAction {
      * Редактирование записи.
      *
      * @param input   объект пользовательского ввода
-     * @param tracker объект доступа к классу Tracker
+     * @param memTracker объект доступа к классу Tracker
      * @return флаг выхода.
      */
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, MemTracker memTracker) {
         System.out.println("\n--- Edit item ---");
         String id = input.askStr("Enter old id: ");
         String name = input.askStr("Enter new name: ");
         Item item = new Item(name);
-        if (tracker.replace(id, item)) {
+        if (memTracker.replace(id, item)) {
             System.out.println("(OK) Task changed");
             System.out.println("[name]: " + item.getName()
                     + " [id]: " + item.getId());

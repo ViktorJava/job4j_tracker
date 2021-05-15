@@ -17,11 +17,11 @@ public class ExitAction implements UserAction {
      * Выход из программы
      *
      * @param input   объект пользовательского ввода
-     * @param tracker объект доступа к классу Tracker
+     * @param memTracker объект доступа к классу Tracker
      * @return флаг выхода.
      */
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, MemTracker memTracker) {
         System.out.println("Exit the Program");
         return false;
     }

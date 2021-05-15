@@ -17,15 +17,15 @@ public class CreateAction implements UserAction {
      * Создать запись.
      *
      * @param input   объект пользовательского ввода
-     * @param tracker объект доступа к классу Tracker
+     * @param memTracker объект доступа к классу Tracker
      * @return флаг выхода.
      */
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, MemTracker memTracker) {
         System.out.println("\n--- Create a new item ---");
         String name = input.askStr("Enter name: ");
         Item item = new Item(name);
-        tracker.add(item);
+        memTracker.add(item);
         System.out.println("New item created:");
         System.out.println("[name]: " + item.getName()
                 + " [id]: " + item.getId());

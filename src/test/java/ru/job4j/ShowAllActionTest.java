@@ -22,11 +22,11 @@ public class ShowAllActionTest {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         PrintStream def = System.out;
         System.setOut(new PrintStream(out));
-        Tracker tracker = new Tracker();
+        MemTracker memTracker = new MemTracker();
         Item item = new Item("fix bug");
-        tracker.add(item);
+        memTracker.add(item);
         ShowAllAction act = new ShowAllAction();
-        act.execute(new StubInput(new String[]{}), tracker);
+        act.execute(new StubInput(new String[]{}), memTracker);
         String expect = new StringJoiner(System.lineSeparator(), System.lineSeparator(), System.lineSeparator())
                 .add("--- Show all items ---")
                 .add("0.[name]: " + item.getName() + " [id]: " + item.getId() + System.lineSeparator())

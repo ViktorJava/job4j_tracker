@@ -13,16 +13,16 @@ public class StartUI {
      * Главный цикл программы.
      *
      * @param input   класс определяющий ввод данных.
-     * @param tracker класс работы с записями.
+     * @param memTracker класс работы с записями.
      * @param actions массив действий.
      */
-    public void init(Input input, Tracker tracker, UserAction[] actions) {
+    public void init(Input input, MemTracker memTracker, UserAction[] actions) {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
             int select = input.askInt("Select: ", actions.length);
             UserAction action = actions[select];
-            run = action.execute(input, tracker);
+            run = action.execute(input, memTracker);
         }
     }
 
@@ -46,7 +46,7 @@ public class StartUI {
     public static void main(String[] args) {
         Input input = new ConsoleInput();
         Input validate = new ValidateInput(input);
-        Tracker tracker = new Tracker();
+        MemTracker memTracker = new MemTracker();
         //создаём массив действий
         UserAction[] actions = {
                 new CreateAction(),
@@ -57,6 +57,6 @@ public class StartUI {
                 new FindNameAction(),
                 new ExitAction()
         };
-        new StartUI().init(validate, tracker, actions);
+        new StartUI().init(validate, memTracker, actions);
     }
 }

@@ -17,27 +17,27 @@ import static org.junit.Assert.assertThat;
 public class ItemTest {
     @Test
     public void thenNameSortIncrease() {
-        Tracker tracker = new Tracker();
+        MemTracker memTracker = new MemTracker();
         Item item3 = new Item("Item3");
         Item item1 = new Item("Item1");
         Item item2 = new Item("Item2");
-        tracker.add(item1);
-        tracker.add(item2);
-        tracker.add(item3);
-        tracker.findAll().sort(new NameSortInc());
-        assertThat(tracker.findAll(), is(Arrays.asList(item1, item2, item3)));
+        memTracker.add(item1);
+        memTracker.add(item2);
+        memTracker.add(item3);
+        memTracker.findAll().sort(new NameSortInc());
+        assertThat(memTracker.findAll(), is(Arrays.asList(item1, item2, item3)));
     }
 
     @Test
     public void thenNameSortDecrease() {
-        Tracker tracker = new Tracker();
+        MemTracker memTracker = new MemTracker();
         Item item3 = new Item("Item3");
         Item item1 = new Item("Item1");
         Item item2 = new Item("Item2");
-        tracker.add(item1);
-        tracker.add(item2);
-        tracker.add(item3);
-        tracker.findAll().sort(new NameSortDec());
-        assertThat(tracker.findAll(), is(Arrays.asList(item3, item2, item1)));
+        memTracker.add(item1);
+        memTracker.add(item2);
+        memTracker.add(item3);
+        memTracker.findAll().sort(new NameSortDec());
+        assertThat(memTracker.findAll(), is(Arrays.asList(item3, item2, item1)));
     }
 }

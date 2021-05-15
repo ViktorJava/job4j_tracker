@@ -12,7 +12,7 @@ import java.util.Random;
  * @version 1.3
  * @since 27.10.2019
  */
-public class Tracker {
+public class MemTracker {
 
     /* Список для хранение заявок.
     Лучшей практикой считается взаимодействие через интерфейсы,

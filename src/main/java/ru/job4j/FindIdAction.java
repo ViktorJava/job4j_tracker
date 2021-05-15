@@ -18,15 +18,15 @@ public class FindIdAction implements UserAction {
      * Поиск записи по ID.
      *
      * @param input   объект пользовательского ввода
-     * @param tracker объект доступа к классу Tracker
+     * @param memTracker объект доступа к классу Tracker
      * @return флаг выхода.
      */
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, MemTracker memTracker) {
         System.out.println("\n--- Find item by Id ---");
         String id = input.askStr("Enter item id: ");
         System.out.println("please wait...");
-        Item item = tracker.findById(id);
+        Item item = memTracker.findById(id);
         if (item != null) {
             System.out.println("(OK) Task found");
             System.out.println("[name]: " + item.getName()

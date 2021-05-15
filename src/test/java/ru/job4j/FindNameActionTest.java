@@ -22,11 +22,11 @@ public class FindNameActionTest {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         PrintStream def = System.out;
         System.setOut(new PrintStream(out));
-        Tracker tracker = new Tracker();
+        MemTracker memTracker = new MemTracker();
         Item item = new Item("fix bug");
-        tracker.add(item);
+        memTracker.add(item);
         FindNameAction act = new FindNameAction();
-        act.execute(new StubInput(new String[]{"fix bug"}), tracker);
+        act.execute(new StubInput(new String[]{"fix bug"}), memTracker);
         String expect = new StringJoiner(System.lineSeparator(), System.lineSeparator(), System.lineSeparator())
                 .add("--- Find items by name ---")
                 .add("Enter item name: ")

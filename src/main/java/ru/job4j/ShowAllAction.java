@@ -17,15 +17,15 @@ public class ShowAllAction implements UserAction {
      * Показать записи.
      *
      * @param input   объект пользовательского ввода
-     * @param tracker объект доступа к классу Tracker
+     * @param memTracker объект доступа к классу Tracker
      * @return флаг выхода.
      */
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, MemTracker memTracker) {
         System.out.println();
         System.out.println("--- Show all items ---");
         int count = 0;
-        for (Item item : tracker.findAll()) {
+        for (Item item : memTracker.findAll()) {
             System.out.println(String.format("%d.[name]: %s [id]: %s", (count++), item.getName(), item.getId()));
         }
         System.out.println();

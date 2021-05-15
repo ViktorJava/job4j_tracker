@@ -14,7 +14,7 @@ import static org.junit.Assert.assertThat;
  * @version 1.2
  * @since 14.11.2019
  */
-public class TrackerTest {
+public class MemTrackerTest {
 
     /**
      * Тест метода add.
@@ -24,10 +24,10 @@ public class TrackerTest {
      */
     @Test
     public void whenAddNewItemThenTrackerHasSameItem() {
-        Tracker tracker = new Tracker();
+        MemTracker memTracker = new MemTracker();
         Item item = new Item("Item1");
-        tracker.add(item);
-        Item result = tracker.findById(item.getId());
+        memTracker.add(item);
+        Item result = memTracker.findById(item.getId());
         assertThat(result.getName(), is(item.getName()));
     }
 
@@ -42,14 +42,14 @@ public class TrackerTest {
      */
     @Test
     public void whenReplaceNameThenReturnNewName() {
-        Tracker tracker = new Tracker();
+        MemTracker memTracker = new MemTracker();
         Item item1 = new Item("item1");
         Item item2 = new Item("item2");
-        tracker.add(item1);
-        tracker.add(item2);
+        memTracker.add(item1);
+        memTracker.add(item2);
         Item newItem = new Item("newItem");
-        tracker.replace(item2.getId(), newItem);
-        assertThat(tracker.findById(item2.getId()).getName(), is("newItem"));
+        memTracker.replace(item2.getId(), newItem);
+        assertThat(memTracker.findById(item2.getId()).getName(), is("newItem"));
     }
 
     /**
@@ -60,14 +60,14 @@ public class TrackerTest {
      */
     @Test
     public void deleteItem() {
-        Tracker tracker = new Tracker();
+        MemTracker memTracker = new MemTracker();
         Item test1 = new Item("test1");
         Item test2 = new Item("test2");
-        tracker.add(test1);
-        tracker.add(test2);
-        assertThat(tracker.delete(test1.getId()), is(true));
+        memTracker.add(test1);
+        memTracker.add(test2);
+        assertThat(memTracker.delete(test1.getId()), is(true));
         Item[] expected = {test2};
-        assertThat(tracker.findAll(), is(Arrays.asList(expected)));
+        assertThat(memTracker.findAll(), is(Arrays.asList(expected)));
     }
 
     /**
@@ -78,16 +78,16 @@ public class TrackerTest {
      */
     @Test
     public void findItemByName() {
-        Tracker tracker = new Tracker();
+        MemTracker memTracker = new MemTracker();
         Item test1 = new Item("test1");
         Item test2 = new Item("test2");
         Item test3 = new Item("test3");
-        tracker.add(test1);
-        tracker.add(test2);
-        tracker.add(test3);
-        tracker.add(test1);
+        memTracker.add(test1);
+        memTracker.add(test2);
+        memTracker.add(test3);
+        memTracker.add(test1);
         Item[] expected = {test1, test1};
-        assertThat(tracker.findByName(test1.getName()), is(Arrays.asList(expected)));
+        assertThat(memTracker.findByName(test1.getName()), is(Arrays.asList(expected)));
     }
 
     /**
@@ -97,14 +97,14 @@ public class TrackerTest {
      */
     @Test
     public void findItemById() {
-        Tracker tracker = new Tracker();
+        MemTracker memTracker = new MemTracker();
         Item test1 = new Item("test1");
         Item test2 = new Item("test2");
         Item test3 = new Item("test3");
-        tracker.add(test1);
-        tracker.add(test2);
-        tracker.add(test3);
-        assertThat(tracker.findById(test2.getId()), is(test2));
+        memTracker.add(test1);
+        memTracker.add(test2);
+        memTracker.add(test3);
+        assertThat(memTracker.findById(test2.getId()), is(test2));
     }
 
     /**
@@ -115,15 +115,15 @@ public class TrackerTest {
      */
     @Test
     public void whenFindAllThenFindAll() {
-        Tracker tracker = new Tracker();
+        MemTracker memTracker = new MemTracker();
         Item test1 = new Item("test1");
         Item test2 = new Item("test2");
         Item test3 = new Item("test3");
-        tracker.add(test1);
-        tracker.add(test2);
-        tracker.add(test3);
-        tracker.add(test2);
+        memTracker.add(test1);
+        memTracker.add(test2);
+        memTracker.add(test3);
+        memTracker.add(test2);
         Item[] expected = {test1, test2, test3, test2};
-        assertThat(tracker.findAll(), is(Arrays.asList(expected)));
+        assertThat(memTracker.findAll(), is(Arrays.asList(expected)));
     }
 }

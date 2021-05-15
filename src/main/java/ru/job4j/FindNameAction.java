@@ -17,16 +17,16 @@ public class FindNameAction implements UserAction {
      * Поиск записи по имени.
      *
      * @param input   объект пользовательского ввода
-     * @param tracker объект доступа к классу Tracker
+     * @param memTracker объект доступа к классу Tracker
      * @return флаг выхода.
      */
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, MemTracker memTracker) {
         System.out.println();
         System.out.println("--- Find items by name ---");
         String name = input.askStr("Enter item name: ");
         System.out.println("please wait...");
-        for (Item item: tracker.findByName(name)) {
+        for (Item item: memTracker.findByName(name)) {
             System.out.println(String.format("[name]: %s [id]: %s",
                     item.getName(), item.getId()));
         }

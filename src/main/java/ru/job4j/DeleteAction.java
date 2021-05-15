@@ -17,14 +17,14 @@ public class DeleteAction implements UserAction {
      * Удаление записи.
      *
      * @param input   объект пользовательского ввода
-     * @param tracker объект доступа к классу Tracker
+     * @param memTracker объект доступа к классу Tracker
      * @return флаг выхода.
      */
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, MemTracker memTracker) {
         System.out.println("\n--- Delete item ---");
         String id = input.askStr("Enter item id: ");
-        if (tracker.delete(id)) {
+        if (memTracker.delete(id)) {
             System.out.println("(OK) Task deleted");
         } else {
             System.out.println("(Error) Task not found");
