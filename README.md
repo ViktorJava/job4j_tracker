@@ -2,13 +2,8 @@
 > Описание проекта.
 
 
-[![Build Status](https://travis-ci.org/ViktorJava/job4j_design.svg?branch=master)](https://travis-ci.org/ViktorJava/job4j_design)
-[![codecov](https://codecov.io/gh/ViktorJava/job4j_design/branch/master/graph/badge.svg?token=HIEPGWYZ44)](https://codecov.io/gh/ViktorJava/job4j_design)
-![GitHub repo size](https://img.shields.io/github/repo-size/ViktorJava/job4j_design)
-![GitHub top language](https://img.shields.io/github/languages/top/ViktorJava/job4j_design)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/ViktorJava/job4j_design)
-
-[![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=ViktorJava&show_icons=true)](https://github.com/anuraghazra/github-readme-stats)
+[![Build Status](https://travis-ci.org/ViktorJava/job4j_tracker.svg?branch=master)](https://travis-ci.org/ViktorJava/job4j_tracker)
+[![codecov](https://codecov.io/gh/ViktorJava/job4j_tracker/branch/master/graph/badge.svg)](https://codecov.io/gh/ViktorJava/job4j_tracker)
 
 ## Технологии и инструменты:
 <p align="center">
