@@ -13,7 +13,7 @@ public class StartUI {
      * Главный цикл программы.
      *
      * @param input      класс определяющий ввод данных.
-     * @param sqlTracker класс работы с записями.
+     * @param sqlTracker класс для работы c заявками в базе данных.
      * @param actions    массив действий.
      */
     public void init(Input input, Store sqlTracker, UserAction[] actions) {
