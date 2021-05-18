@@ -1,5 +1,5 @@
 # Проект Tracker [<img alt="Logo" src="images/logo.png" height="80" align="right"/>](https://www.vectorlogo.zone)
-> Описание проекта.
+> Учебный проект регистрации заявок..
 
 
 [![Build Status](https://travis-ci.org/ViktorJava/job4j_tracker.svg?branch=master)](https://travis-ci.org/ViktorJava/job4j_tracker)
@@ -17,9 +17,10 @@
 <img src="images/junit.png" alt="JUnit"  height="40"/>
 <img src="images/postgresql.png" alt="PSQL"  height="45"/>
 <img src="images/jcf.png" alt="JCF"  width="90"/>
+<img src="images/liquibase.png" alt="liquibase" height="30"/>
 </p>
 
-Краткое описание проекта.
+На площадке **Tracker** отрабатываются технологии программирования, приобретаются практические навыки применения концепций и инструментов, проектирования и архитектуры.
 
 ## Лицензия
 	
