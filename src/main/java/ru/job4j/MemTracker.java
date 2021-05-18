@@ -39,9 +39,9 @@ public class MemTracker {
      *
      * @return Уникальный ключ.
      */
-    private String generateId() {
+    private int generateId() {
         Random rm = new Random();
-        return String.valueOf(Math.abs(rm.nextLong() + System.currentTimeMillis()));
+        return (int) Math.abs(rm.nextLong() + System.currentTimeMillis());
     }
 
     /**
@@ -51,7 +51,7 @@ public class MemTracker {
      * @param newItem новая заявка.
      * @return true если операция завершилась успешно, иначе false.
      */
-    public boolean replace(String id, Item newItem) {
+    public boolean replace(int id, Item newItem) {
         boolean result = false;
         int index = indexOfItem(id);
         if (index != -1) {
@@ -68,7 +68,7 @@ public class MemTracker {
      * @param id идентификатор заявки.
      * @return false при неудаче, иначе true.
      */
-    public boolean delete(String id) {
+    public boolean delete(int id) {
         boolean result = false;
         int index = indexOfItem(id);
         if (index != -1) {
@@ -95,7 +95,7 @@ public class MemTracker {
      */
     public List<Item> findByName(String key) {
         ArrayList<Item> resultName = new ArrayList<>();
-        for (Item item : items) {
+        for (Item item: items) {
             if (item.getName().equals(key)) {
                 resultName.add(item);
             }
@@ -109,7 +109,7 @@ public class MemTracker {
      * @param id идентификатор заявки.
      * @return если Item не найден - возвращает null.
      */
-    public Item findById(String id) {
+    public Item findById(int id) {
         int index = indexOfItem(id);
         return index < 0 ? null : items.get(index);
     }
@@ -120,11 +120,11 @@ public class MemTracker {
      * @param id идентификатор поиска.
      * @return индэкс найденной заявки или -1 при отсутствии.
      */
-    private int indexOfItem(String id) {
+    private int indexOfItem(int id) {
         int result = -1;
         int index = 0;
-        for (Item item : items) {
-            if (item.getId().equals(id)) {
+        for (Item item: items) {
+            if (item.getId() == id) {
                 result = index;
                 break;
             }
