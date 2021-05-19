@@ -10,11 +10,18 @@ import java.util.Properties;
  * Класс для работы c заявками в базе данных.
  *
  * @author ViktorJava (gipsyscrew@gmail.com)
- * @version 0.1
+ * @version 0.2
  * @since 15.05.2021
  */
 public class SqlTracker implements Store {
-    Connection cn;
+    private Connection cn;
+
+    public SqlTracker(Connection cn) {
+        this.cn = cn;
+    }
+
+    public SqlTracker() {
+    }
 
     /**
      * Метод инициализации базы данных.
@@ -63,7 +70,7 @@ public class SqlTracker implements Store {
             statement.execute();
             try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
-                    item.setId(generatedKeys.getString(1));
+                    item.setId(generatedKeys.getInt(1));
                 }
             }
         } catch (Exception throwables) {
@@ -128,7 +135,7 @@ public class SqlTracker implements Store {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     items.add(new Item(
-                            resultSet.getString("id"),
+                            resultSet.getInt("id"),
                             resultSet.getString("name")
                     ));
                 }
@@ -154,7 +161,7 @@ public class SqlTracker implements Store {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     items.add(new Item(
-                            resultSet.getString("id"),
+                            resultSet.getInt("id"),
                             resultSet.getString("name")
                     ));
                 }
@@ -180,7 +187,7 @@ public class SqlTracker implements Store {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     result = new Item(
-                            resultSet.getString("id"),
+                            resultSet.getInt("id"),
                             resultSet.getString("name")
                     );
                 }
