@@ -13,12 +13,26 @@
             <properties>
                 <db.url>jdbc:postgresql://127.0.0.1:5432/tracker</db.url>
                 <db.username>postgres</db.username>
-                <db.password>0000</db.password>
+                <db.password></db.password>
                 <db.driver>org.postgresql.Driver</db.driver>
             </properties>
         </profile>
         <profile>
             <id>production</id>
+            <properties>
+                <db.url>jdbc:postgresql://127.0.0.1:5432/tracker</db.url>
+                <db.username>postgres</db.username>
+                <db.password>0000</db.password>
+                <db.driver>org.postgresql.Driver</db.driver>
+            </properties>
+        </profile>
+
+        <!--Travis профиль для автоматического создания базы данных-->
+        <profile>
+            <id>travis</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <properties>
                 <db.url>jdbc:postgresql://127.0.0.1:5432/tracker</db.url>
                 <db.username>postgres</db.username>
@@ -120,7 +134,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <finalName>memTracker</finalName>
+                            <finalName>SQLTracker</finalName>
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
