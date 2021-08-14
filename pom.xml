@@ -11,28 +11,17 @@
         <profile>
             <id>test</id>
             <properties>
-                <db.url>jdbc:postgresql://127.0.0.1:5432/tracker</db.url>
-                <db.username>postgres</db.username>
-                <db.password></db.password>
-                <db.driver>org.postgresql.Driver</db.driver>
-            </properties>
-        </profile>
-        <profile>
-            <id>production</id>
-            <properties>
-                <db.url>jdbc:postgresql://127.0.0.1:5432/tracker</db.url>
+                <db.url>jdbc:h2:~/testdb;MODE=PostgreSQL;CASE_INSENSITIVE_IDENTIFIERS=TRUE;</db.url>
                 <db.username>postgres</db.username>
                 <db.password>0000</db.password>
-                <db.driver>org.postgresql.Driver</db.driver>
+                <db.driver>org.h2.Driver</db.driver>
             </properties>
-        </profile>
-
-        <!--Travis профиль для автоматического создания базы данных-->
-        <profile>
-            <id>travis</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
+        </profile>
+        <profile>
+            <id>production</id>
             <properties>
                 <db.url>jdbc:postgresql://127.0.0.1:5432/tracker</db.url>
                 <db.username>postgres</db.username>
@@ -74,8 +63,14 @@
             <artifactId>postgresql</artifactId>
             <version>42.2.16</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.200</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <!-- Плагин покрытия проектов, тестами. -->
@@ -134,11 +129,11 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <finalName>SQLTracker</finalName>
+                            <finalName>tracker</finalName>
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>ru.job4j</mainClass>
+                                    <mainClass>ru.job4j.StartUI</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
@@ -161,12 +156,12 @@
                     <execution>
                         <phase>process-resources</phase>
                         <goals>
+                            <goal>clearCheckSums</goal>
                             <goal>update</goal>
                         </goals>
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 </project>
